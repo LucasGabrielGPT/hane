@@ -18,11 +18,13 @@
         <button type="button" onclick="addItem()">Adicionar Item</button>
     </form>
 
+    <input type="text" id="searchBar" placeholder="Pesquisar itens..." onkeyup="searchItems()">
+
     <table id="estoqueTable">
         <thead>
             <tr>
-                <th>Nome do Item</th>
-                <th>Quantidade</th>
+                <th onclick="sortTable(0)">Nome do Item</th>
+                <th onclick="sortTable(1)">Quantidade</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -34,3 +36,4 @@
     <script src="scripts.js"></script>
 </body>
 </html>
+
