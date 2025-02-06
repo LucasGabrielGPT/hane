@@ -1,4 +1,7 @@
+let currentEditableCell = null;
+
 function addItem() {
+    const itemID = document.getElementById('itemID').value;
     const itemName = document.getElementById('itemName').value;
     const quantity = document.getElementById('quantity').value;
 
@@ -8,28 +11,38 @@ function addItem() {
     const cell1 = newRow.insertCell(0);
     const cell2 = newRow.insertCell(1);
     const cell3 = newRow.insertCell(2);
+    const cell4 = newRow.insertCell(3);
 
-    cell1.innerHTML = itemName;
-    cell2.innerHTML = quantity;
-    cell3.innerHTML = `
+    cell1.className = 'editable';
+    cell2.className = 'editable';
+    cell3.className = 'editable';
+
+    cell1.innerHTML = itemID;
+    cell2.innerHTML = itemName;
+    cell3.innerHTML = quantity;
+    cell4.innerHTML = `
         <div class="actions">
-            <button onclick="editItem(this)">Editar</button>
             <button onclick="deleteItem(this)">Excluir</button>
         </div>
     `;
 
+    cell1.addEventListener('click', () => makeEditable(cell1));
+    cell2.addEventListener('click', () => makeEditable(cell2));
+    cell3.addEventListener('click', () => makeEditable(cell3));
+
     document.getElementById('estoqueForm').reset();
 }
 
-function editItem(button) {
-    const row = button.parentNode.parentNode.parentNode;
-    const itemName = row.cells[0].innerHTML;
-    const quantity = row.cells[1].innerHTML;
+function makeEditable(cell) {
+    if (currentEditableCell && currentEditableCell !== cell) {
+        currentEditableCell.contentEditable = false;
+        currentEditableCell.style.padding = '12px';
+    }
 
-    document.getElementById('itemName').value = itemName;
-    document.getElementById('quantity').value = quantity;
-
-    row.remove();
+    cell.contentEditable = true;
+    cell.style.padding = '8px';
+    cell.focus();
+    currentEditableCell = cell;
 }
 
 function deleteItem(button) {
@@ -43,14 +56,8 @@ function searchItems() {
     const rows = table.getElementsByTagName('tr');
 
     for (let row of rows) {
-        const cells = row.getElementsByTagName('td');
-        let match = false;
-        for (let cell of cells) {
-            if (cell.innerHTML.toLowerCase().includes(input)) {
-                match = true;
-                break;
-            }
-        }
+        const idCell = row.getElementsByTagName('td')[0];
+        const match = idCell.innerHTML.toLowerCase().includes(input);
         row.style.display = match ? '' : 'none';
     }
 }
