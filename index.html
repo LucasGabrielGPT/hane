@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estoque</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Sistema de Estoque</h1>
+    <form id="estoqueForm">
+        <label for="itemName">Nome do Item:</label>
+        <input type="text" id="itemName" name="itemName" required>
+
+        <label for="quantity">Quantidade:</label>
+        <input type="number" id="quantity" name="quantity" required>
+
+        <button type="button" onclick="addItem()">Adicionar Item</button>
+    </form>
+
+    <table id="estoqueTable">
+        <thead>
+            <tr>
+                <th>Nome do Item</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itens do estoque serão adicionados aqui -->
+        </tbody>
+    </table>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
