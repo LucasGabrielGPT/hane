@@ -7,33 +7,34 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Sistema de Estoque</h1>
-    <form id="estoqueForm">
-        <label for="itemName">Nome do Item:</label>
-        <input type="text" id="itemName" name="itemName" required>
+    <div class="container">
+        <h1>Sistema de Estoque</h1>
+        <form id="estoqueForm">
+            <label for="itemName">Nome do Item:</label>
+            <input type="text" id="itemName" name="itemName" required>
 
-        <label for="quantity">Quantidade:</label>
-        <input type="number" id="quantity" name="quantity" required>
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" name="quantity" required>
 
-        <button type="button" onclick="addItem()">Adicionar Item</button>
-    </form>
+            <button type="button" onclick="addItem()">Adicionar Item</button>
+        </form>
 
-    <input type="text" id="searchBar" placeholder="Pesquisar itens..." onkeyup="searchItems()">
+        <input type="text" id="searchBar" placeholder="Pesquisar itens..." onkeyup="searchItems()">
 
-    <table id="estoqueTable">
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">Nome do Item</th>
-                <th onclick="sortTable(1)">Quantidade</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Itens do estoque serão adicionados aqui -->
-        </tbody>
-    </table>
+        <table id="estoqueTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Nome do Item</th>
+                    <th onclick="sortTable(1)">Quantidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Itens do estoque serão adicionados aqui -->
+            </tbody>
+        </table>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
 </html>
-
