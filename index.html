@@ -10,6 +10,9 @@
     <div class="container">
         <h1>Sistema de Estoque</h1>
         <form id="estoqueForm">
+            <label for="itemID">ID do Item:</label>
+            <input type="text" id="itemID" name="itemID" required>
+
             <label for="itemName">Nome do Item:</label>
             <input type="text" id="itemName" name="itemName" required>
 
@@ -19,13 +22,14 @@
             <button type="button" onclick="addItem()">Adicionar Item</button>
         </form>
 
-        <input type="text" id="searchBar" placeholder="Pesquisar itens..." onkeyup="searchItems()">
+        <input type="text" id="searchBar" placeholder="Pesquisar por ID..." onkeyup="searchItems()">
 
         <table id="estoqueTable">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0)">Nome do Item</th>
-                    <th onclick="sortTable(1)">Quantidade</th>
+                    <th onclick="sortTable(0)">ID</th>
+                    <th onclick="sortTable(1)">Nome do Item</th>
+                    <th onclick="sortTable(2)">Quantidade</th>
                     <th>Ações</th>
                 </tr>
             </thead>
